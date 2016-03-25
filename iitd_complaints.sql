@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2016 at 07:17 AM
+-- Generation Time: Mar 25, 2016 at 07:40 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -63,7 +63,15 @@ CREATE TABLE IF NOT EXISTS `complaints` (
   `upvotes_num` int(11) NOT NULL,
   `comments_num` int(11) NOT NULL,
   `resolved` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `complaints`
+--
+
+INSERT INTO `complaints` (`title`, `description`, `type`, `postedby`, `admin`, `datetime_created`, `datetime_last`, `id`, `upvotes_num`, `comments_num`, `resolved`) VALUES
+('LAN issue', 'LAN has not been functional in room for the past 3 days. The LAN port seems to have developed an internal problem.', '0', 'cs1140209', 'cs1140209', '2016-03-25 00:00:00', '2016-03-25 00:00:00', 1, 0, 0, 0),
+('hostel washroom maintainance', 'The hygiene in the washroom WA-08 (on the first floor of the west wing) has been steadily deteriorating, with no cleaner appearing since 1 week now.', '1:girnar', 'cs1140209', 'girnar_warden', '2016-03-25 00:00:00', '2016-03-25 00:00:00', 2, 3, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -75,7 +83,15 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `id` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
   `datetime_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `description`, `datetime_created`) VALUES
+(1, 'Created test notification for app', '2016-03-25 01:13:28'),
+(2, 'Another notification for timepass', '2016-03-26 03:09:03');
 
 -- --------------------------------------------------------
 
@@ -87,10 +103,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `sr.no` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `kerberos_username` varchar(10) NOT NULL,
+  `hostel` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` char(10) NOT NULL,
   `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`sr.no`, `name`, `kerberos_username`, `hostel`, `email`, `phone`, `password`) VALUES
+(7, 'quantumcoder', 'cs1140209', 'girnar', 'quantumcomputing.gmail', '9717253064', 'pass'),
+(10, 'patman', 'cs1140453', 'satpura', 'singhmanish1997.gmail', '9717263785', 'manish');
 
 --
 -- Indexes for dumped tables
@@ -122,17 +147,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `sr.no` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sr.no` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
